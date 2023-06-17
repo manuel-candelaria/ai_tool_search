@@ -18,6 +18,8 @@
          <!-- Main CSS -->
         <link href="/static/css/main.css" rel="stylesheet">
         <link rel="shortcut icon" href="https://mycvpictures.s3.eu-south-2.amazonaws.com/avatar.png" type="image/x-icon">
+        <link href="static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
 
         <title> {% block title %} AI Tool Finder {% endblock %}</title>
         <script src="script.js"></script> <!-- Reference your JavaScript file here -->
@@ -28,14 +30,17 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <div class="container-fluid">
               <a href="/" class="navbar-brand"> AI Tool Finder</a>
-          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+              <a href="https://github.com/manuel-candelaria/ai_tool_search"  class="navbar-brand" target="_blank"> 
+                Code Repo
+                <i class="fa fa-github fa-2x" aria-hidden="true"></i>
+              </a>          
+          </div>  
       </nav>
 
     <main class="container-fluid py-5 text-center">
       
       {% block main %}
+
       {% endblock %}
 
     </main>
