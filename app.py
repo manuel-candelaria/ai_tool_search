@@ -38,7 +38,7 @@ def ai_tool_name():
     # Get category and pricing from user
     pricing = request.form.get("pricing")
     category = request.form.get("category")
-    name_or_usage = "blank"
+    name_or_usage = request.form.get("name_or_usage")
 
     # Define error message
     message = "Select a valid options for Category and Pricing Model"
@@ -47,9 +47,8 @@ def ai_tool_name():
     print(category)
     print(name_or_usage)
 
-    if name_or_usage == "blank":
+    if name_or_usage == "":
         if pricing == None or category == None:
-
             return render_template("error.html", message=message)
         # Get number of matching tools in ai_tool_name and pricing as a list
         ai_tool_name_count = get_count(pricing, category)
