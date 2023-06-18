@@ -5,51 +5,46 @@
 {% endblock %}
 
 {% block main %}
-
-<img src="/static/icons/aitool2.png" width="300" height="201" alt="">
-
-    <h5>Select Pricing Model and Category:</h5>
-    <form action="/" method="post">
-        <div class="row justify-content-center" >
-            <div class="col" >
-                <select class="mx-auto" name="pricing" placeholder="Pricing" style="width:auto;">
-                    <option selected>Pricing Models:</option>
-                    {% for pricing in pricings %}
-
-                        <option value="{{ pricing }}">{{ pricing }}</option>
-
-                    {% endfor %}
-
-                </select>
-            </div>
-        </div>
-        <div class="row justify-content-center" >
-            <div class="col">
-                <select class="mx-auto" name="category" placeholder="Category" style="width:auto;">
-                    <option selected>Categories:</option>
-                    {% for category in categories %}
-
-                        <option value="{{ category }}">{{ category }}</option>
-
-                    {% endfor %}
-                </select>
-            </div>
-        </div>        
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-auto">
-                <button type="submit" class="btn btn-primary btn-lg enabled">Submit</button>
+            <div class="col-md-3 text-center">
+                <img class="img-thumbnail"src="/static/icons/aitool2.png" width="300" height="201" alt="">
+                <h5>Search by Keyword:</h5>
+                <form action="/" method="post">
+                    <div class="form-group">
+                        <div class="row justify-content-center">
+                            <input type="text" class="form-control" name="name_or_usage" placeholder="Name or Usage">
+                        </div>
+                    </div>
+                    <hr>
+                    <h5 class="text-center">Or</h5>
+                    <h5>Search by Category and Pricing Model:</h5>
+                    <div class="form-group">
+                        <div class="row justify-content-center">
+                            <select class="form-control" name="pricing">
+                                <option selected disabled>Pricing Models:</option>
+                                {% for pricing in pricings %}
+                                    <option value="{{ pricing }}">{{ pricing }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row justify-content-center">
+                            <select class="form-control" name="category">
+                                <option selected disabled>Categories:</option>
+                                {% for category in categories %}
+                                    <option value="{{ category }}">{{ category }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                    </div>
+                </form>
             </div>
-        </div>
-        {{message}}
-    </form>
-    
-    <footer class="page-footer font-small blue">
+        </div>       
+    </div>
 
-        <div class="footer-attribution text-center">
-
-            <a href="https://www.kaggle.com/datasets/shahriarrahman009/futureidea-ai-tools-dataset" title="data set">Data Set Obtained from Kaggle </a>
-               
-        </div>
-   
-      </footer>
 {% endblock %}

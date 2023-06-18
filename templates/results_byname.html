@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+    AI Tools Search Results
+    
+{% endblock %}
+
+{% block main %}
+
+        <h3>Search Condition:</h3> 
+        <p>
+            <b>Pricing:</b> {{name_or_usage}}
+        </p>
+
+
+        <h3>Popular AI Tools:</h3>
+
+        <div class="row mx-auto">
+
+            {% for aitool in recent_aitools %}
+
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">{{aitool['ai_tool_name']}}</h3>
+                        <h5 class="card-title">{{aitool['types_of_use']}}</h5>
+                        <p class="card-text">Pricing: {{aitool['pricing']}}</p>
+                        <p class="card-text">Cost: {{aitool['cost']}}</p>
+                        <p>
+                            
+                            {% for category in aitool['categories'].split('#') %}
+                                {% if category.strip() %}
+                                    <span class="badge badge-pill badge-secondary">{{ category.strip() }}</span>
+                                {% endif %}
+                            {% endfor %}
+                            
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                
+                        <a href={{aitool['url']}} class="btn btn-dark float-right" target="_blank">Read about it</a>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+{% endblock %}

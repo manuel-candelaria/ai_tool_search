@@ -4,7 +4,7 @@ import datetime
 
 from flask import Flask, render_template, request
 from pymongo import MongoClient
-from helpers import get_count, get_aitools
+from helpers import get_count, get_aitools, get_count_byname, get_tools_byname
 
 from dotenv import load_dotenv
 import os
@@ -38,20 +38,32 @@ def ai_tool_name():
     # Get category and pricing from user
     pricing = request.form.get("pricing")
     category = request.form.get("category")
+    name_or_usage = request.form.get("name_or_usage")
+
 
     # Define error message
     message = "Select a valid options for Category and Pricing Model"
             
-    if request.form.get("pricing") == "Pricing Models:" or request.form.get("category") == "Categories:":
-        return render_template("error.html", message=message)
 
-    # Get number of matching tools in ai_tool_name and pricing as a list
-    ai_tool_name_count = get_count(pricing, category)
 
-    # Get a list of AI Tools matching the selected pricing and category
-    recent_aitools = get_aitools(pricing, category)
+    if request.form.get("name_or_usage") == "":
+        if request.form.get("pricing") == "Pricing Models:" or request.form.get("category") == "Categories:":
+            return render_template("error.html", message=message)
+        # Get number of matching tools in ai_tool_name and pricing as a list
+        ai_tool_name_count = get_count(pricing, category)
 
-    return render_template("results.html", ai_tool_name_count=ai_tool_name_count, recent_aitools=recent_aitools, pricing=pricing, category=category)
+        # Get a list of AI Tools matching the selected pricing and category
+        recent_aitools = get_aitools(pricing, category)
+        return render_template("results.html", ai_tool_name_count=ai_tool_name_count, recent_aitools=recent_aitools, pricing=pricing, category=category)
+    
+    else:
+        ai_tool_name_count = get_count_byname(name_or_usage)
+        print(ai_tool_name_count)
+
+        recent_aitools = get_tools_byname(name_or_usage)
+        print(recent_aitools)
+
+        return render_template("results_byname.html",ai_tool_name_count=ai_tool_name_count, recent_aitools=recent_aitools, name_or_usage=name_or_usage)
 
 if __name__ == "__main__":
     app.run()
