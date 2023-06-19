@@ -1,50 +1,86 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Get AI Tools 
+    Get AI Tools
 {% endblock %}
 
 {% block main %}
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-3 text-center">
-                <img class="img-thumbnail"src="/static/icons/aitool2.png" width="300" height="201" alt="">
-                <h5>Search by Keyword:</h5>
-                <form action="/" method="post">
-                    <div class="form-group">
-                        <div class="row justify-content-center">
-                            <input type="text" class="form-control" name="name_or_usage" placeholder="Name or Usage">
-                        </div>
-                    </div>
-                    <hr>
-                    <h5 class="text-center">Or</h5>
-                    <h5>Search by Category and Pricing Model:</h5>
-                    <div class="form-group">
-                        <div class="row justify-content-center">
-                            <select class="form-control" name="pricing">
-                                <option selected disabled>Pricing Models:</option>
-                                {% for pricing in pricings %}
-                                    <option value="{{ pricing }}">{{ pricing }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row justify-content-center">
-                            <select class="form-control" name="category">
-                                <option selected disabled>Categories:</option>
-                                {% for category in categories %}
-                                    <option value="{{ category }}">{{ category }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group text-center">
-                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>       
-    </div>
+<img class="img-thumbnail" src="/static/icons/aitool2.png" width="300" height="201" alt="">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-3 text-center">
 
+            <h5>Search by Keyword:</h5>
+            <form action="/" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name_or_usage" placeholder="Keyword">
+                </div>
+        </div>
+        <div class="col-md-3 text-center">
+            <h5 class="text-center">Or</h5>
+        </div>
+        <div class="col-md-3 text-center">
+            <h5>Search by Category and Pricing Model:</h5>
+            <div class="form-group">
+                
+                <select type="text" class="form-control" name="pricing" id="pricing">
+                    <option selected disabled>Select</option>
+                    {% for pricing in pricings %}
+                    <option value="{{ pricing }}">{{ pricing }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                
+                <select class="form-control" name="category" id="category">
+                    <option selected disabled>Select</option>
+                    {% for category in categories %}
+                    <option value="{{ category }}">{{ category }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container-fluid">
+        <a href="/" class="navbar-brand"> AI Tool Finder</a>         
+    </div>  
+</nav>
+
+<footer class="footer bg-dark">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 h-100 text-center text-white text-lg-start my-auto">
+                <ul class="list-inline mb-2">
+                    <li class="list-inline-item"><a href="https://www.tool42.xyz/">About Me</a></li>
+                    <li class="list-inline-item">⋅</li>
+                    <li class="list-inline-item"><a href="https://tool42.netlify.app/">Contact</a></li>
+                   <!-- <li class="list-inline-item">⋅</li>
+                    <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
+                    <li class="list-inline-item">⋅</li>
+                    <li class="list-inline-item"><a href="#!">Privacy Policy</a></li> -->
+                </ul>
+            </div>
+            <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item me-4">
+                        <a href="https://www.linkedin.com/in/manuelcan/"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="list-inline-item me-4">
+                        <a href="https://medium.com/@manuelcandelaria"><i class="fa fa-medium fa-2x" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="list-inline-item me-4"> 
+                        <a href="https://github.com/manuel-candelaria"><i class="fa fa-github fa-2x" aria-hidden="true"></i></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
 {% endblock %}
