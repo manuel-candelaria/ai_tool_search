@@ -43,10 +43,6 @@ def ai_tool_name():
     # Define error message
     message = "Select a valid options for Category and Pricing Model"
 
-    print(pricing)
-    print(category)
-    print(name_or_usage)
-
     if name_or_usage == "":
         if pricing == None or category == None:
             return render_template("error.html", message=message)
