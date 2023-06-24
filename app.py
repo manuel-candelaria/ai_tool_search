@@ -41,7 +41,7 @@ def ai_tool_name():
     name_or_usage = request.form.get("name_or_usage")
 
     # Define error message
-    message = "Select a valid options for Category and Pricing Model"
+    message = "Select a valid option for Category and Pricing Model"
 
     if name_or_usage == "":
         if pricing == None or category == None:
