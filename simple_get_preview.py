@@ -39,7 +39,7 @@ def get_website_preview(url):
 # Main function
 def main():
     # Get the URL of the website from the user
-    url = "https://aisearch.tool42.xyz/"
+    url = "https://aitool.ai/sites/chappy-ai"
 
     # Call the get_website_preview function
     screenshot_path = get_website_preview(url)
