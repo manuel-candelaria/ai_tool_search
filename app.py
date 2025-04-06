@@ -29,7 +29,7 @@ categories = ["3D", "art", "audio editing", "avatars", "code assistant", "copywr
 @app.route("/", methods=["GET", "POST"])
 def ai_tool_name():
 
-    # For GET Request: Let user submit ai_tool_name and pricing to look up matching records
+    # For GET Request: Let user submit ai_tool_name and pricing to look up matching records add this
     if request.method == "GET":
 
         return render_template("tool_search.html", pricings=pricings, categories=categories)
